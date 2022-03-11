@@ -1,6 +1,7 @@
 import React from "react"
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Error from "./views/Error";
+import './index.css';
 
 import Home from './views/Home'
 

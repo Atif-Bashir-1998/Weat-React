@@ -17,7 +17,7 @@ export default function Home() {
           recusandae alias error harum maxime adipisci amet laborum.</p>
       </section>
 
-      <section>
+      <section className='mb-5'>
         <h1 className='font-bold underline text-2xl'>Technologies used</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
           molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum

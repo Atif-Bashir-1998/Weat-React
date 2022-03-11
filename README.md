@@ -3,7 +3,7 @@ This is a frontend to weatherapi.com API. Checkout the api here at [https://www.
 This project is created to demonstrate usage of React Hooks and integrating third-party APIs on the frontend.
 
 ## Technologies used?
-1- React
+1- React <br >
 2- Tailwind CSS
 
 ## Available Scripts

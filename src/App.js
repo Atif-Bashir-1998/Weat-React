@@ -5,6 +5,7 @@ import './index.css';
 
 import Home from './views/Home'
 import Navbar from "./components/Navbar";
+import Realtime from "./views/Realtime";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/realtime" element={<Realtime />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

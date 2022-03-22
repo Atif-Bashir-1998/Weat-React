@@ -6,6 +6,7 @@ import './index.css';
 import Home from './views/Home'
 import Navbar from "./components/Navbar";
 import Realtime from "./views/Realtime";
+import Forecast from "./views/Forecast";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/realtime" element={<Realtime />} />
+          <Route path="/forecast" element={<Forecast />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

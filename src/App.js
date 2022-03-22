@@ -5,14 +5,16 @@ import './index.css';
 
 import Home from './views/Home'
 import Navbar from "./components/Navbar";
+import Index from "./views/Index";
 
 function App() {
   return (
     <>
       <Router>
-        <Navbar/>
+        {/* <Navbar/> */}
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Index" element={<Index />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

@@ -1,8 +1,10 @@
 import React from "react";
 import bg from "./../images/night-clear.jpg";
 import clearNight from "./../images/clear-night.svg"
+import { useSelector } from "react-redux";
 
 export default function HeroSection() {
+	const location = useSelector((state) => state.weatherReducer.location)
 	return (
 		<div
 			className="h-96 p-10 text-white"
@@ -14,7 +16,7 @@ export default function HeroSection() {
 				<div className="flex items-center justify-between">
 					<div>
 						<h1 className="text-7xl font-bold">31'C <span className="text-gray-500 cursor-pointer">| F</span></h1>
-						<h2 className="text-3xl italic text-gray-300 mt-4">Attock City, Punjab, Pakistan</h2>
+						<h2 className="text-3xl italic text-gray-300 mt-4">{ location }</h2>
 					</div>
 					<img src={clearNight} className='w-24 h-24' />
 				</div>

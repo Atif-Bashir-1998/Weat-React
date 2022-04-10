@@ -13,8 +13,8 @@ export default function HeroSection() {
 				{/* weather summary section */}
 				<div className="flex items-center justify-between">
 					<div>
-						<h1>31'C | F</h1>
-						<h2>Attock City, Punjab, Pakistan</h2>
+						<h1 className="text-7xl font-bold">31'C <span className="text-gray-500 cursor-pointer">| F</span></h1>
+						<h2 className="text-3xl italic text-gray-300 mt-4">Attock City, Punjab, Pakistan</h2>
 					</div>
 					<img src={clearNight} className='w-24 h-24' />
 				</div>

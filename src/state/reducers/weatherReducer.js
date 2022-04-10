@@ -1,5 +1,5 @@
 const initialState = {
-    location: null
+    location: "Attock City, Punjab, Pakistan"
 }
 
 export default (state = initialState, { type, payload }) => {

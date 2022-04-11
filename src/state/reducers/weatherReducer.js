@@ -2,7 +2,8 @@ const initialState = {
     location: "Attock City, Punjab, Pakistan"
 }
 
-export default (state = initialState, { type, payload }) => {
+const reducer = (state = initialState, { type, payload }) => {
+  console.log("here")
   switch (type) {
 
   case "SET_LOCATION":
@@ -12,3 +13,5 @@ export default (state = initialState, { type, payload }) => {
     return state
   }
 }
+
+export default reducer;

@@ -1,5 +1,6 @@
 const initialState = {
-    location: "Attock City, Punjab, Pakistan"
+    location: "Attock City, Punjab, Pakistan",
+    weather: {}
 }
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -8,6 +9,9 @@ const reducer = (state = initialState, { type, payload }) => {
 
   case "SET_LOCATION":
     return { ...state, location: payload }
+
+  case "SET_WEATHER":
+    return {...state, weather: payload}
 
   default:
     return state

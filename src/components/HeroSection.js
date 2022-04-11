@@ -4,17 +4,26 @@ import clearNight from "./../images/clear-night.svg"
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../state/index";
+import Alert from './Alert'
 
 export default function HeroSection() {
 	const location = useSelector((state) => state.weather.location)
 	const dispatch = useDispatch()
+
 	const [locationInput, setLocationInput] = useState('')
+	const [showAlert, setShowAlert] = useState(false)
 
 	const {setLocation} = bindActionCreators(actionCreators, dispatch)
 
 	const updateLocation = () => {
-		setLocation(locationInput)
-		setLocationInput('')
+		if(locationInput){
+			setLocation(locationInput)
+			setLocationInput('')
+		}
+		else{
+			setShowAlert(true)
+			setTimeout(() => setShowAlert(false), 2000)
+		}
 	}
 	// console.log("set: ", setLocation)
 
@@ -43,6 +52,10 @@ export default function HeroSection() {
 					</div>
 				</div>
 			</section>
+
+			{
+				showAlert && <Alert>Please add a city name in input box</Alert>
+			}
 		</div>
 	);
 }

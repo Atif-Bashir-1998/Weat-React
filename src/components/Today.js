@@ -7,7 +7,7 @@ import thermometer from './../images/thermometer.svg'
 import { useSelector } from 'react-redux'
 
 export default function Today() {
-    const location = useSelector((state) => state.weatherReducer.location)
+    const location = useSelector((state) => state.weather.location)
   return (
     <section className='bg-gray-100 w-10/12 lg:w-2/3 m-auto rounded-md shadow-md p-4 md:p-10'>
         <h1 className='text-lg md:text-xl text-gray-700'>Weather today in {location}</h1>

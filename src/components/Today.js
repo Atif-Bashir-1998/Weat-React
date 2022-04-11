@@ -47,49 +47,49 @@ export default function Today() {
             <div className='flex items-center w-full border-2 border-blue-300'>
                 <img src={thermometer} className='w-12 h-12 bg-gray-300' />
                 <div className='flex justify-between flex-grow px-4'>
-                    <p>High/Low</p>
+                    <p>Humidity</p>
                     <p>--/18'</p>
                 </div>
             </div>
             <div className='flex items-center w-full border-2 border-blue-300'>
                 <img src={thermometer} className='w-12 h-12 bg-gray-300' />
                 <div className='flex justify-between flex-grow px-4'>
-                    <p>High/Low</p>
+                    <p>Pressure</p>
                     <p>--/18'</p>
                 </div>
             </div>
             <div className='flex items-center w-full border-2 border-blue-300'>
                 <img src={thermometer} className='w-12 h-12 bg-gray-300' />
                 <div className='flex justify-between flex-grow px-4'>
-                    <p>High/Low</p>
+                    <p>Visibility</p>
                     <p>--/18'</p>
                 </div>
             </div>
             <div className='flex items-center w-full border-2 border-blue-300'>
                 <img src={thermometer} className='w-12 h-12 bg-gray-300' />
                 <div className='flex justify-between flex-grow px-4'>
-                    <p>High/Low</p>
+                    <p>Wind</p>
                     <p>--/18'</p>
                 </div>
             </div>
             <div className='flex items-center w-full border-2 border-blue-300'>
                 <img src={thermometer} className='w-12 h-12 bg-gray-300' />
                 <div className='flex justify-between flex-grow px-4'>
-                    <p>High/Low</p>
+                    <p>Dew Point</p>
                     <p>--/18'</p>
                 </div>
             </div>
             <div className='flex items-center w-full border-2 border-blue-300'>
                 <img src={thermometer} className='w-12 h-12 bg-gray-300' />
                 <div className='flex justify-between flex-grow px-4'>
-                    <p>High/Low</p>
+                    <p>UV Index</p>
                     <p>--/18'</p>
                 </div>
             </div>
             <div className='flex items-center w-full border-2 border-blue-300'>
                 <img src={thermometer} className='w-12 h-12 bg-gray-300' />
                 <div className='flex justify-between flex-grow px-4'>
-                    <p>High/Low</p>
+                    <p>Moon Phase</p>
                     <p>--/18'</p>
                 </div>
             </div>

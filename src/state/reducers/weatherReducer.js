@@ -1,21 +1,23 @@
 const initialState = {
-    location: "Attock City, Punjab, Pakistan",
-    weather: {}
-}
+  location: "Attock City, Punjab, Pakistan",
+  weather: {},
+  forecast: {},
+};
 
 const reducer = (state = initialState, { type, payload }) => {
-  console.log("here")
   switch (type) {
+    case "SET_LOCATION":
+      return { ...state, location: payload };
 
-  case "SET_LOCATION":
-    return { ...state, location: payload }
+    case "SET_WEATHER":
+      return { ...state, weather: payload };
 
-  case "SET_WEATHER":
-    return {...state, weather: payload}
+    case "SET_FORECAST":
+      return { ...state, forecast: payload };
 
-  default:
-    return state
+    default:
+      return state;
   }
-}
+};
 
 export default reducer;

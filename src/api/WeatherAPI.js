@@ -5,7 +5,7 @@ const today = dayjs().format('YYYY-MM-DD')
 
 const getWeather = async (location) => {
     try {
-        const response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}&aqi=yes`)
+        const response = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&aqi=yes&days=3`)
         return {data: response.data}
     } catch (error) {
         return {error}

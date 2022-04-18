@@ -20,3 +20,10 @@ export const setWeather = (weather) => {
         payload: weather
     }
 }
+
+export const setForecast = (forecast) => {
+    return {
+        type: 'SET_FORECAST',
+        payload: forecast
+    }
+}

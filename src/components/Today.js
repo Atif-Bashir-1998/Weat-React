@@ -17,6 +17,8 @@ import { useSelector } from "react-redux";
 export default function Today() {
   const location = useSelector((state) => state.weather.location)
 	const weather = useSelector((state) => state.weather.weather)
+  const astro = useSelector((state) => state.weather.forecast)
+
   if(Object.keys(weather).length === 0){
     return (
       <h1>No Data</h1>
@@ -94,8 +96,8 @@ export default function Today() {
           <div className="flex items-center w-full border-2 border-blue-300">
             <img src={dustwind} className="w-12 h-12 bg-gray-500" />
             <div className="flex justify-between flex-grow px-4">
-              <p>Air Quality <small>(PM2.5)</small> </p>
-              <p>{weather.air_quality.pm2_5}</p>
+              <p>Air Quality <small>(UK Defra standard)</small> </p>
+              <p>{weather.air_quality["gb-defra-index"]}</p>
             </div>
           </div>
           <div className="flex items-center w-full border-2 border-blue-300">

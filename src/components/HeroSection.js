@@ -16,12 +16,12 @@ export default function HeroSection() {
 	const [showAlert, setShowAlert] = useState(false)
 	const [alertMessage, setAlertMessage] = useState('')
 
-	const {setLocation, setWeather} = bindActionCreators(actionCreators, dispatch)
+	const {setLocation, setWeather, setForecast} = bindActionCreators(actionCreators, dispatch)
 
 	const updateLocation = async () => {
 		if(locationInput){
 			let {data, error} = await getWeather(locationInput)
-			console.log("d/e",data, error)
+			console.log("d/e",data.forecast.forecastday, error)
 			if(error){
 				setAlertMessage(error.response.data.error.message)
 				displayAlert()
@@ -30,6 +30,7 @@ export default function HeroSection() {
 				let actualLocation = [data.location.name, data.location.region, data.location.country].join(', ')
 				setLocation(actualLocation)
 				setWeather(data.current)
+				setForecast(data.forecast.forecastday)
 				setLocationInput('')
 			}
 		}
@@ -42,6 +43,10 @@ export default function HeroSection() {
 	const displayAlert = () => {
 		setShowAlert(true)
 		setTimeout(() => setShowAlert(false), 2000)
+	}
+
+	const removeAlert = () => {
+		setShowAlert(false)
 	}
 
 	return (
@@ -71,7 +76,7 @@ export default function HeroSection() {
 			</section>
 
 			{
-				showAlert && <Alert>{alertMessage}</Alert>
+				showAlert && <Alert removeAlert={removeAlert} message={alertMessage}></Alert>
 			}
 		</div>
 	);

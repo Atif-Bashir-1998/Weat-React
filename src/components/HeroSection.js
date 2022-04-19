@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import bg from "./../images/night-clear.jpg";
 import clearNight from "./../images/clear-night.svg"
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -51,11 +50,10 @@ export default function HeroSection() {
 
 	return (
 		<div
-			className="h-96 p-10 text-white"
-			style={{ background: `url(${bg})`, backgroundPositionY: "bottom" }}
+			className="h-96 p-10 text-white hero-section"
 		>
 			{/* <img src={bg} /> */}
-			<section className="flex flex-col">
+			<section className="flex flex-col h-full">
 				{/* weather summary section */}
 				<div className="flex items-center justify-between">
 					<div>

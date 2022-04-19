@@ -5,27 +5,49 @@ import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../state/index";
 import Alert from './Alert'
+import {getWeather} from "../api/WeatherAPI";
 
 export default function HeroSection() {
 	const location = useSelector((state) => state.weather.location)
+	const weather = useSelector((state) => state.weather.weather)
 	const dispatch = useDispatch()
 
 	const [locationInput, setLocationInput] = useState('')
 	const [showAlert, setShowAlert] = useState(false)
+	const [alertMessage, setAlertMessage] = useState('')
 
-	const {setLocation} = bindActionCreators(actionCreators, dispatch)
+	const {setLocation, setWeather, setForecast} = bindActionCreators(actionCreators, dispatch)
 
-	const updateLocation = () => {
+	const updateLocation = async () => {
 		if(locationInput){
-			setLocation(locationInput)
-			setLocationInput('')
+			let {data, error} = await getWeather(locationInput)
+			console.log("d/e",data.forecast.forecastday, error)
+			if(error){
+				setAlertMessage(error.response.data.error.message)
+				displayAlert()
+			}
+			else{
+				let actualLocation = [data.location.name, data.location.region, data.location.country].join(', ')
+				setLocation(actualLocation)
+				setWeather(data.current)
+				setForecast(data.forecast.forecastday)
+				setLocationInput('')
+			}
 		}
 		else{
-			setShowAlert(true)
-			setTimeout(() => setShowAlert(false), 2000)
+			setAlertMessage('Enter a city in the input!')
+			displayAlert()
 		}
 	}
-	// console.log("set: ", setLocation)
+
+	const displayAlert = () => {
+		setShowAlert(true)
+		setTimeout(() => setShowAlert(false), 2000)
+	}
+
+	const removeAlert = () => {
+		setShowAlert(false)
+	}
 
 	return (
 		<div
@@ -37,7 +59,7 @@ export default function HeroSection() {
 				{/* weather summary section */}
 				<div className="flex items-center justify-between">
 					<div>
-						<h1 className="text-7xl font-bold">31'C <span className="text-gray-500 cursor-pointer">| F</span></h1>
+						<h1 className="text-7xl font-bold">{weather.temp_c} &#176;C <span className="text-gray-500 cursor-pointer">| F</span></h1>
 						<h2 className="text-3xl italic text-gray-300 mt-4">{ location }</h2>
 					</div>
 					<img src={clearNight} className='w-24 h-24' />
@@ -54,7 +76,7 @@ export default function HeroSection() {
 			</section>
 
 			{
-				showAlert && <Alert>Please add a city name in input box</Alert>
+				showAlert && <Alert removeAlert={removeAlert} message={alertMessage}></Alert>
 			}
 		</div>
 	);

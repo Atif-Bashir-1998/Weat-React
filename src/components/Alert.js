@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-export default function Alert({children}) {
+export default function Alert({removeAlert, message}) {
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      removeAlert()
+    }, 3000)
+
+    return () => clearTimeout(timeout)
+  }, [])
   return (
     <div
-      class="bg-indigo-100 rounded-lg py-2 px-6 text-base text-indigo-600 font-bold absolute right-12 top-4"
+      className="bg-indigo-100 rounded-lg py-2 px-6 text-base text-indigo-600 font-bold absolute right-12 top-4"
       role="alert"
     >
-      {children}
+      {message}
     </div>
   );
 }

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .hero-section{
-    background: url('../src/images/bg.jpg');
+    background: url('../src/images/day.jpg');
     background-position-y: center;
     background-repeat: no-repeat;
     background-size: cover;

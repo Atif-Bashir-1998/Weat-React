@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import clearNight from "./../images/clear-night.svg"
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../state/index";
 import Alert from './Alert'
 import {getWeather} from "../api/WeatherAPI";
+import LocationSearch from "./LocationSearch";
 
 export default function HeroSection() {
 	const location = useSelector((state) => state.weather.location)
@@ -17,25 +18,22 @@ export default function HeroSection() {
 
 	const {setLocation, setWeather, setForecast} = bindActionCreators(actionCreators, dispatch)
 
-	const updateLocation = async () => {
-		if(locationInput){
-			let {data, error} = await getWeather(locationInput)
-			console.log("d/e",data.forecast.forecastday, error)
-			if(error){
-				setAlertMessage(error.response.data.error.message)
-				displayAlert()
-			}
-			else{
-				let actualLocation = [data.location.name, data.location.region, data.location.country].join(', ')
-				setLocation(actualLocation)
-				setWeather(data.current)
-				setForecast(data.forecast.forecastday)
-				setLocationInput('')
-			}
+	useEffect(() => {
+		locationUpdated(location)
+	}, [location])
+
+	const locationUpdated = async (location) => {
+		console.log("locationupdated: ", location)
+		let {data, error} = await getWeather(location)
+		if(error){
+			setAlertMessage(error.response.data.error.message)
+			displayAlert()
 		}
 		else{
-			setAlertMessage('Enter a city in the input!')
-			displayAlert()
+			setLocation(location)
+			setWeather(data.current)
+			setForecast(data.forecast.forecastday)
+			setLocationInput('')
 		}
 	}
 
@@ -64,13 +62,9 @@ export default function HeroSection() {
 				</div>
 				{/* input box */}
 				<div className="flex justify-center">
-					<div className="mb-3 xl:w-96">
-						<div className="relative flex items-stretch w-full mb-4">
-							<input type="search" className="form-control relative flex-auto w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white  border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search" value={locationInput} onChange={(e) => setLocationInput(e.target.value)} />
-							<button className="px-6 py-2 border-2 border-gray-600 text-white-600 bg-indigo-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-25 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" type="button" id="button-addon3" onClick={updateLocation}>Search</button>
-						</div>
-					</div>
+					<LocationSearch />
 				</div>
+				
 			</section>
 
 			{

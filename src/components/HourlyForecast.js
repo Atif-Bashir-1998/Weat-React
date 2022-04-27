@@ -7,13 +7,16 @@ import { useSelector } from "react-redux";
 // import Chart from "react-apexcharts";
 import Graph from "./Graph";
 import dayjs from "dayjs";
+import WeatherList from "./WeatherList";
 
 
 export default function HourlyForecast() {
   const forecast = useSelector((state) => state.weather.forecast);
   // let hourlyForecastCards = 5
-  let [forecastDay, setForecastDay] = useState(0);
+  const [forecastDay, setForecastDay] = useState(0);
   let selectedForecast = forecast[forecastDay];
+  const [showList, setShowList] = useState(false);
+
 
   if(Object.keys(forecast).length === 0){
     return (
@@ -23,11 +26,22 @@ export default function HourlyForecast() {
   else{
     return (
       <section className="bg-gray-100 w-10/12 lg:w-2/3 m-auto rounded-md shadow-md p-4 md:p-10">
+        {/* <Modal /> */}
         <h1>Hourly Data</h1>
+        <div className="mb-5">
+          <button className="bg-blue-700 text-white px-6 py-2 rounded mr-3" onClick={() => setShowList(false)}>Graph</button>
+          <button className="bg-blue-700 text-white px-6 py-2 rounded" onClick={() => setShowList(true)}>List</button>
+        </div>
+        <hr></hr>
         <button onClick={() => setForecastDay(0)} className="px-6 py-2 mr-3 border-2 border-gray-600 text-white-600 bg-indigo-600 font-medium text-white text-xs leading-tight rounded">{dayjs().format('DD-MM')}</button>
         <button onClick={() => setForecastDay(1)} className="px-6 py-2 mr-3 border-2 border-gray-600 text-white-600 bg-indigo-600 font-medium text-white text-xs leading-tight rounded">{dayjs().add(1, 'day').format('DD-MM')}</button>
         <button onClick={() => setForecastDay(2)} className="px-6 py-2 border-2 border-gray-600 text-white-600 bg-indigo-600 font-medium text-white text-xs leading-tight rounded">{dayjs().add(2, 'day').format('DD-MM')}</button>
-        <Graph graphData={selectedForecast.hour} />
+        {
+          showList && <WeatherList listData={selectedForecast.hour} />
+        }
+        {
+          !showList && <Graph graphData={selectedForecast.hour} />
+        }
       </section>
     )
   }

@@ -1,5 +1,5 @@
 const initialState = {
-  location: "Attock City, Punjab, Pakistan",
+  location: localStorage.getItem('location') || "Attock City, Punjab, Pakistan",
   weather: {},
   forecast: {},
 };

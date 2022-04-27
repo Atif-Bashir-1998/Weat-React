@@ -21,4 +21,13 @@ const getAstronomy = async (location) => {
     }
 }
 
-export {getWeather, getAstronomy}
+const getSuggestion = async (query) => {
+    try {
+        const response = await axios.get(`http://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${query}`)
+        return {data: response.data}
+    } catch (error) {
+        return {error}
+    }
+}
+
+export {getWeather, getAstronomy, getSuggestion}

@@ -30,4 +30,13 @@ const getSuggestion = async (query) => {
     }
 }
 
-export {getWeather, getAstronomy, getSuggestion}
+const getLocationFromLatLong = async (coordinates) => {
+    try {
+        const response = await axios.get(`http://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${coordinates}`)
+        return {data: response.data[0]}
+    } catch (error) {
+        return {error}
+    }
+}
+
+export {getWeather, getAstronomy, getSuggestion, getLocationFromLatLong}

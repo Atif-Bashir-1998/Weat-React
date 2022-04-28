@@ -27,3 +27,17 @@ export const setForecast = (forecast) => {
         payload: forecast
     }
 }
+
+export const setCelsiusScale = (isCelsiusScale) => {
+    return {
+        type: 'SET_CELSIUSSCALE',
+        payload: isCelsiusScale
+    }
+}
+
+export const setAstro = (astro) => {
+    return {
+        type: 'SET_ASTRO',
+        payload: astro
+    }
+}

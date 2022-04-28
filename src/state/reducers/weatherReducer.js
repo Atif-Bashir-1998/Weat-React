@@ -1,5 +1,5 @@
 const initialState = {
-  location: localStorage.getItem('location') || "Attock City, Punjab, Pakistan",
+  location: localStorage.getItem('location') || "",
   weather: {},
   forecast: {},
 };
@@ -7,6 +7,7 @@ const initialState = {
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case "SET_LOCATION":
+      localStorage.setItem('location', payload)
       return { ...state, location: payload };
 
     case "SET_WEATHER":

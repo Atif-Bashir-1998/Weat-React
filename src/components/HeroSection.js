@@ -11,12 +11,13 @@ import LocationSearch from "./LocationSearch";
 export default function HeroSection() {
   const location = useSelector((state) => state.weather.location);
   const weather = useSelector((state) => state.weather.weather);
+  const celsiusScale = useSelector((state) => state.weather.celsiusScale);
   const dispatch = useDispatch();
 
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
-  const { setLocation, setWeather, setForecast } = bindActionCreators(
+  const { setLocation, setWeather, setForecast, setCelsiusScale, setAstro } = bindActionCreators(
     actionCreators,
     dispatch
   );
@@ -57,6 +58,7 @@ export default function HeroSection() {
     } else {
       setWeather(data.current);
       setForecast(data.forecast.forecastday);
+      setAstro(data.forecast.forecastday[0].astro)
     }
   };
 
@@ -69,6 +71,10 @@ export default function HeroSection() {
     setShowAlert(false);
   };
 
+  const toggleCelsiusScale = () => {
+    setCelsiusScale(!celsiusScale)
+  }
+
 	if(!location){
 		getLatLong()
 	}
@@ -80,9 +86,13 @@ export default function HeroSection() {
         {/* weather summary section */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-7xl font-bold">
-              {weather.temp_c} &#176;C{" "}
-              <span className="text-gray-500 cursor-pointer">| F</span>
+            <h1 className="text-7xl font-bold flex space-x-4">
+              <span>{celsiusScale ? weather.temp_c : weather.temp_f} &#176;</span>
+              <div className="text-gray-500 cursor-pointer">
+                <span className={celsiusScale ? 'text-white' : ''} onClick={() => toggleCelsiusScale()}>C{" "}</span>
+                <span>| </span>
+                <span className={!celsiusScale ? 'text-white' : ''} onClick={() => toggleCelsiusScale()}>F</span>
+              </div>
             </h1>
             <h2 className="text-3xl italic text-gray-300 mt-4">{location}</h2>
           </div>

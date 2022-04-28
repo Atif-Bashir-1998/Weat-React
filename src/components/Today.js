@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import sunrise from "./../images/sunrise.svg";
 import sunset from "./../images/sunset.svg";
 import moonrise from "./../images/moonrise.svg";
@@ -17,7 +17,8 @@ import { useSelector } from "react-redux";
 export default function Today() {
   const location = useSelector((state) => state.weather.location)
 	const weather = useSelector((state) => state.weather.weather)
-  const astro = useSelector((state) => state.weather.forecast)
+  const celsiusScale = useSelector((state) => state.weather.celsiusScale);
+  const astro = useSelector((state) => state.weather.astro)
 
   if(Object.keys(weather).length === 0){
     return (
@@ -33,26 +34,26 @@ export default function Today() {
         <span className="flex items-center justify-between">
           <div className="mt-5">
             <h1 className="text-3xl md:text-5xl font-bold text-indigo-600">
-              {weather.feelslike_c} &#176;
+              {celsiusScale ? weather.feelslike_c : weather.feelslike_f} &#176;
             </h1>
             <p className="font-bold">Feels Like</p>
           </div>
           <div className="flex">
             <div className="flex flex-col justify-center items-center">
               <img src={sunrise} className="w-12 h-12 md:w-24 md:h-24" />
-              <p className="text-xs text-gray-600">5:12am</p>
+              <p className="text-xs text-gray-600">{astro ? astro.sunrise : '---'}</p>
             </div>
             <div className="flex flex-col justify-center items-center">
               <img src={sunset} className="w-12 h-12 md:w-24 md:h-24" />
-              <p className="text-xs text-gray-600">6:20pm</p>
+              <p className="text-xs text-gray-600">{astro ? astro.sunset : '---'}</p>
             </div>
             <div className="flex flex-col justify-center items-center">
               <img src={moonrise} className="w-12 h-12 md:w-24 md:h-24" />
-              <p className="text-xs text-gray-600">6:01pm</p>
+              <p className="text-xs text-gray-600">{astro ? astro.moonrise : '---'}</p>
             </div>
             <div className="flex flex-col justify-center items-center">
               <img src={moonset} className="w-12 h-12 md:w-24 md:h-24" />
-              <p className="text-xs text-gray-600">4:39am</p>
+              <p className="text-xs text-gray-600">{astro ? astro.moonset : '---'}</p>
             </div>
           </div>
         </span>

@@ -10,7 +10,6 @@ function SuggestionList({ suggestions, toggleSuggestionList }) {
   const locationUpdated = (item) => {
     let location  = [item.name, item.region, item.country].join(', ')
     setLocation(location)
-    localStorage.setItem('location', location)
     toggleSuggestionList()
   }
 

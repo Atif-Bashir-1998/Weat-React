@@ -2,8 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-.hero-section{
+.day{
     background: url('../src/images/day.jpg');
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.night{
+    background: url('../src/images/night.jpg');
     background-position-y: center;
     background-repeat: no-repeat;
     background-size: cover;

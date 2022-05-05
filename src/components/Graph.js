@@ -11,53 +11,27 @@ function Graph({ graphData }) {
     celsiusScale ? item.temp_c : item.temp_f
   );
 
+  let isSmallScreen = window.screen.width < 768
+
   let options = {
     chart: {
       id: "basic-bar",
       toolbar: false,
       width: "100%",
       height: "auto",
-      // curve: "smooth",
     },
     xaxis: {
       categories: time,
     },
-    // dataLabels: {
-    // 	enabled: false
-    // },
+    dataLabels: {
+    	enabled: !isSmallScreen
+    },
     stroke: {
       curve: "straight",
     },
     markers: {
       size: 0,
     },
-    // annotations: {
-    // 	position: 'front',
-    // 	points: [
-    // 		{
-    // 			x: time[targetIndex],
-    // 			y: temp[targetIndex],
-    // 			marker: {
-    // 				size: 8,
-    // 				fillColor: "red",
-    // 				strokeColor: "#F44336",
-    // 				radius: 2,
-    // 				strokeWidth: 1,
-    // 				cssClass: "apexcharts-custom-class",
-    // 			},
-    // 			label: {
-    // 				borderColor: "#FF4560",
-    // 				offsetY: 0,
-    // 				style: {
-    // 					color: "#fff",
-    // 					background: "#FF4560",
-    // 				},
-
-    // 				// text: "Now",
-    // 			},
-    // 		},
-    // 	]
-    // }
   };
 
   let series = [

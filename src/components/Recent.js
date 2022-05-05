@@ -14,8 +14,6 @@ function Recent() {
 
   const recent = useSelector((state) => state.weather.recent);
 
-	console.log("recent", recent)
-
   const clearHistory = () => {
     let history = [];
     setRecent(history);

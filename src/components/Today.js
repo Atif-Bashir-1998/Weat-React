@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import sunrise from "./../images/sunrise.svg";
 import sunset from "./../images/sunset.svg";
 import moonrise from "./../images/moonrise.svg";

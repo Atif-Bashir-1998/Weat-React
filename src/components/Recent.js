@@ -37,7 +37,7 @@ function Recent() {
         <br />
         {recent.map((item) => (
           <span
-            className="text-indigo-800 mr-5 cursor-pointer hover:underline"
+            className="text-purple-800 text-xs md:text-base mr-5 cursor-pointer hover:underline"
             key={uuidv4()}
             onClick={() => setLocation(item)}
           >

@@ -10,7 +10,7 @@ export default function Alert({removeAlert, message}) {
   }, [])
   return (
     <div
-      className="bg-indigo-100 rounded-lg py-2 px-6 text-base text-indigo-600 font-bold absolute right-12 top-4"
+      className="bg-purple-100 rounded-lg py-2 px-6 text-base text-purple-600 font-bold absolute right-12 top-4"
       role="alert"
     >
       {message}

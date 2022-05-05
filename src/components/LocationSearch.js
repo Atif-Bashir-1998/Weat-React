@@ -18,7 +18,7 @@ function LocationSearch() {
   }, [location])
 
   return (
-    <div className="mb-3 xl:w-96">
+    <div className="mt-20 md:mb-3 w-full xl:w-96">
       <div className="relative flex items-stretch w-full">
         <input
           type="search"

@@ -22,7 +22,6 @@ export default function HourlyForecast() {
   else{
     return (
       <section className="bg-gray-100 w-10/12 lg:w-2/3 m-auto rounded-md shadow-md p-4 md:p-10">
-        {/* <Modal /> */}
         <h1>Hourly Data</h1>
         <div className="mb-5">
           <FontAwesomeIcon className="bg-purple-700 text-white px-3 md:px-6 py-1 md:py-2 rounded cursor-pointer mr-3" onClick={() => setShowList(false)} icon={faLineChart} />

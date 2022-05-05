@@ -15,10 +15,8 @@ function WeatherListItem({data}) {
   return (
     <>
       <article className='flex items-center justify-between px-4 mt-3 bg-gray-200 cursor-pointer rounded-t-lg' onClick={toggleListDetail}>
-        {/* <p>Time: {dayjs.unix(data.time_epoch).format('HH:mm DD-MM-YYYY')}</p> */}
         <p className='text-xs flex-1'>{dayjs(data.time).format('h a')}</p>
         <p className='font-bold text-xs md:text-lg flex-1'>{celsiusScale ? data.temp_c : data.temp_f} &#176;</p>
-        {/* <p>Temp feels: {data.feelslike_c}</p> */}
         <p className='flex items-center flex-1'>
           <img src={data.condition.icon} className="h-12 md:h-24 w-12 md:w-24"></img>
           <span className='hidden md:visible'>{data.condition.text}</span>

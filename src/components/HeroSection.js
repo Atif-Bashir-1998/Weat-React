@@ -18,8 +18,6 @@ export default function HeroSection() {
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
-  // const [isOnline, setIsOnline] = useState(window.navigator.onLine);
-
   const { setLocation, setWeather, setForecast, setCelsiusScale, setAstro, setOnline } = bindActionCreators(
     actionCreators,
     dispatch

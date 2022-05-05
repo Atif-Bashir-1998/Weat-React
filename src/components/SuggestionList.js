@@ -6,11 +6,20 @@ import { actionCreators } from "../state/index";
 function SuggestionList({ suggestions, toggleSuggestionList }) {
 	const dispatch = useDispatch()
 
-  const {setLocation} = bindActionCreators(actionCreators, dispatch)
+  const {setLocation, setRecent} = bindActionCreators(actionCreators, dispatch)
   const locationUpdated = (item) => {
     let location  = [item.name, item.region, item.country].join(', ')
     setLocation(location)
+    saveToRecent(location)
     toggleSuggestionList()
+  }
+
+  const saveToRecent = (location) => {
+    let recent = JSON.parse(localStorage.getItem('recent')) === null ? [] : JSON.parse(localStorage.getItem('recent'))
+    recent.unshift(location)
+    let recentHistory = recent.splice(0,3)
+    setRecent(recentHistory)
+    localStorage.setItem('recent', JSON.stringify(recentHistory))
   }
 
   return (

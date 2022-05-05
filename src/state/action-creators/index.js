@@ -41,3 +41,10 @@ export const setAstro = (astro) => {
         payload: astro
     }
 }
+
+export const setRecent = (recent) => {
+    return {
+        type: 'SET_RECENT',
+        payload: recent
+    }
+}

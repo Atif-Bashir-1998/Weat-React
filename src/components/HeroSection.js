@@ -80,13 +80,13 @@ export default function HeroSection() {
 	}
 
   return (
-    <div className="h-96 p-10 text-white hero-section">
+    <div className={`h-80 md:h-96 p-10 text-white ${weather.is_day ? 'day' : 'night'}`}>
       {/* <img src={bg} /> */}
       <section className="flex flex-col h-full">
         {/* weather summary section */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-7xl font-bold flex space-x-4">
+            <h1 className="text-2xl md:text-7xl font-bold flex md:space-x-4">
               <span>{celsiusScale ? weather.temp_c : weather.temp_f} &#176;</span>
               <div className="text-gray-500 cursor-pointer">
                 <span className={celsiusScale ? 'text-white' : ''} onClick={() => toggleCelsiusScale()}>C{" "}</span>
@@ -94,11 +94,11 @@ export default function HeroSection() {
                 <span className={!celsiusScale ? 'text-white' : ''} onClick={() => toggleCelsiusScale()}>F</span>
               </div>
             </h1>
-            <h2 className="text-3xl italic text-gray-300 mt-4">{location}</h2>
+            <h2 className="md:text-3xl italic text-gray-300 mt-4">{location}</h2>
           </div>
           <img
             src={weather.is_day ? clearDay : clearNight}
-            className="w-24 h-24"
+            className="w-12 md:w-24 h-12 md:h-24"
           />
         </div>
         {/* input box */}

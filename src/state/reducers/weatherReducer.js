@@ -2,7 +2,8 @@ const initialState = {
   location: localStorage.getItem('location') || "",
   weather: {},
   forecast: {},
-  celsiusScale: true
+  celsiusScale: true,
+  recent: JSON.parse(localStorage.getItem('recent')) || []
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -22,6 +23,9 @@ const reducer = (state = initialState, { type, payload }) => {
 
     case "SET_ASTRO":
       return {...state, astro: payload};
+
+    case "SET_RECENT":
+      return {...state, recent: payload}
 
     default:
       return state;

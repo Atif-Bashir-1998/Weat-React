@@ -48,3 +48,10 @@ export const setRecent = (recent) => {
         payload: recent
     }
 }
+
+export const setOnline = (isOnline) => {
+    return {
+        type: 'SET_ONLINE',
+        payload: isOnline
+    }
+}

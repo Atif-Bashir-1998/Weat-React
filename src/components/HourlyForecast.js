@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import WeatherList from "./WeatherList";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLineChart, faList } from '@fortawesome/free-solid-svg-icons'
+import NoData from "./NoData";
 
 export default function HourlyForecast() {
   const forecast = useSelector((state) => state.weather.forecast);
@@ -15,7 +16,7 @@ export default function HourlyForecast() {
 
   if(Object.keys(forecast).length === 0){
     return (
-      <h1>No Data</h1>
+      <NoData />
     )
   }
   else{

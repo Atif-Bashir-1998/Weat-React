@@ -12,12 +12,15 @@ export default function HeroSection() {
   const location = useSelector((state) => state.weather.location);
   const weather = useSelector((state) => state.weather.weather);
   const celsiusScale = useSelector((state) => state.weather.celsiusScale);
+  const isOnline = useSelector((state) => state.online.online);
   const dispatch = useDispatch();
 
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
-  const { setLocation, setWeather, setForecast, setCelsiusScale, setAstro } = bindActionCreators(
+  // const [isOnline, setIsOnline] = useState(window.navigator.onLine);
+
+  const { setLocation, setWeather, setForecast, setCelsiusScale, setAstro, setOnline } = bindActionCreators(
     actionCreators,
     dispatch
   );
@@ -49,6 +52,23 @@ export default function HeroSection() {
       locationUpdated();
     }
   }, [location]);
+
+  useEffect(() => {
+    if(!isOnline){
+      setAlertMessage('You are currently offline.');
+      displayAlert();
+    }
+    else{
+      locationUpdated();
+    }
+  }, [isOnline])
+
+  // pooling to check for internet connection
+  setInterval(() => {
+    if(window.navigator.onLine != isOnline){
+      setOnline(window.navigator.onLine)
+    }
+  }, 1000)
 
   const locationUpdated = async () => {
     let { data, error } = await getWeather(location);
@@ -103,7 +123,9 @@ export default function HeroSection() {
         </div>
         {/* input box */}
         <div className="flex justify-center">
-          <LocationSearch />
+          {
+            isOnline && <LocationSearch />
+          }
         </div>
       </section>
 

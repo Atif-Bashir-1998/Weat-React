@@ -13,6 +13,7 @@ import haze from "./../images/haze.svg";
 import dustwind from "./../images/dust-wind.svg";
 import raindrops from "./../images/raindrops.svg";
 import { useSelector } from "react-redux";
+import NoData from "./NoData";
 
 export default function Today() {
   const location = useSelector((state) => state.weather.location)
@@ -22,7 +23,7 @@ export default function Today() {
 
   if(Object.keys(weather).length === 0){
     return (
-      <h1>No Data</h1>
+      <NoData />
     )
   }
   else{

@@ -66,7 +66,7 @@ export default function HeroSection() {
     if(window.navigator.onLine != isOnline){
       setOnline(window.navigator.onLine)
     }
-  }, 1000)
+  }, 5*1000)
 
   const locationUpdated = async () => {
     console.log("location: ", location)

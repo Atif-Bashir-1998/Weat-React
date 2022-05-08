@@ -69,6 +69,13 @@ export default function HeroSection() {
   }, 1000)
 
   const locationUpdated = async () => {
+    console.log("location: ", location)
+    if (!location){
+      setAlertMessage('Unable to get your location info. Enter location!');
+      displayAlert();
+      return
+    }
+
     let { data, error } = await getWeather(location);
     if (error) {
       setAlertMessage(error.response.data.error.message);
@@ -82,7 +89,7 @@ export default function HeroSection() {
 
   const displayAlert = () => {
     setShowAlert(true);
-    setTimeout(() => setShowAlert(false), 2000);
+    setTimeout(() => setShowAlert(false), 4000);
   };
 
   const removeAlert = () => {

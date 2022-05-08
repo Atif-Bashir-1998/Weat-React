@@ -5,6 +5,7 @@ import Recent from "../components/Recent";
 import Today from "../components/Today";
 import { useSelector } from "react-redux";
 import NoInternet from "../components/NoInternet";
+import Footer from "../components/Footer";
 
 export default function Index() {
   const isOnline = useSelector((state) => state.online.online);
@@ -24,6 +25,7 @@ export default function Index() {
         )}
         {!isOnline && <NoInternet />}
       </div>
+      <Footer />
     </>
   );
 }

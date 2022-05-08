@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function About() {
   return (
@@ -32,7 +33,10 @@ function About() {
           </ul>
         </div>
 
-        <small>View source code on <a className='text-purple-600' href='https://github.com/Atif-Bashir-1998/Weat-React' target='_blank'>Github</a></small>
+        <div className='flex flex-col'>
+          <small>View source code on <a className='text-purple-600' href='https://github.com/Atif-Bashir-1998/Weat-React' target='_blank'>Github</a></small>
+          <small>Back to <Link to='/' className='text-purple-600'>home</Link></small>
+        </div>
       </section>
 
     </div>
